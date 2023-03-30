@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Define classes for a singly-linked list."""
+
 
 class Node:
     """Represent a node in a singly-linked list."""
@@ -46,6 +48,7 @@ class SinglyLinkedList:
         """Insert a new Node to the SinglyLinkedList.
         The node is inserted into the list at the correct
         ordered numerical position.
+
         Args:
             value (Node): The new Node to insert.
         """
