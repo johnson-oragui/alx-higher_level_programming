@@ -8,7 +8,6 @@ import turtle
 
 class Base:
     """Represent the base model.
-    Represents the "base" for all other classes in project 0x0C*.
     Attributes:
         __nb_objects (int): The number of instantiated Bases.
     """
@@ -28,7 +27,7 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """Return the JSON serialization of a list of dicts.
+        """Returns the JSON string representation of list_dictionaries.
         Args:
             list_dictionaries (list): A list of dictionaries.
         """
@@ -38,9 +37,9 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """Write the JSON serialization of a list of objects to a file.
+        """Writes the JSON string representation of list_objs to a file.
         Args:
-            list_objs (list): A list of inherited Base instances.
+            list_objs (list): List of instances who inherits of Base
         """
         filename = cls.__name__ + ".json"
         with open(filename, "w") as jsonfile:
@@ -52,11 +51,11 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
-        """Return the deserialization of a JSON string.
+        """Returns the list of the JSON string representation json_string.
         Args:
-            json_string (str): A JSON str representation of a list of dicts.
+            json_string (str): A string representing a list of dictionaries.
         Returns:
-            If json_string is None or empty - an empty list.
+            An empty list if json_string is None or empty.
             Otherwise - the Python list represented by json_string.
         """
         if json_string is None or json_string == "[]":
@@ -65,9 +64,9 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """Return a class instantied from a dictionary of attributes.
+        """Returns an instance with all attributes already set.
         Args:
-            **dictionary (dict): Key/value pairs of attributes to initialize.
+            **dictionary (dict):  A double pointer to a dictionary
         """
         if dictionary and dictionary != {}:
             if cls.__name__ == "Rectangle":
