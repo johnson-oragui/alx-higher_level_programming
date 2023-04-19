@@ -135,7 +135,8 @@ class Base:
 
     @staticmethod
     def draw(list_rectangles, list_squares):
-        """Opens a window and draws all the Rectangles and Squares using the turtle module.
+        """Opens a window and draws all the Rectangles,
+            and Squares using the turtle module.
         Args:
             list_rectangles: A list of all Rectangle objects to draw.
             list_squares: A list of all Square objects to draw.
