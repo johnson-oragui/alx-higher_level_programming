@@ -1,3 +1,5 @@
+-- Creates the database hbtn_0d_2 and the user user_0d_2.
+
 -- Create the database if it doesn't already exist
 CREATE DATABASE IF NOT EXISTS hbtn_0d_2;
 
