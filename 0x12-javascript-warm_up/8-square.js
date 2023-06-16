@@ -2,7 +2,7 @@
 
 const squareSize = process.argv[2];
 const mySquare = parseInt(squareSize);
-const x = 'x';
+const x = 'X';
 
 if (isNaN(mySquare)) {
   console.log('Missing size');
