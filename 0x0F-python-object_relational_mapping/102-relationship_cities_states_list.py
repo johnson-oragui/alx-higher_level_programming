@@ -10,11 +10,29 @@ from relationship_state import State
 from relationship_city import City
 
 if __name__ == "__main__":
-    engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}"
-                           .format(sys.argv[1], sys.argv[2], sys.argv[3]),
-                           pool_pre_ping=True)
+
+    # Get the command-line arguments
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    database_name = sys.argv[3]
+
+    # Create the engine to connect to the MySQL server
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
+                       .format(mysql_username, mysql_password, database_name))
+
+    # Create a configured Session class
     Session = sessionmaker(bind=engine)
+
+    # Create a session
     session = Session()
 
-    for city in session.query(City).order_by(City.id):
+    # Query all City objects and their associated State objects
+    cities = session.query(City).join(State).order_by(City.id)
+
+    # Display the results
+    for city in cities:
         print("{}: {} -> {}".format(city.id, city.name, city.state.name))
+
+    # Close the session
+    session.close()
+

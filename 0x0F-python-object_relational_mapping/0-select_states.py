@@ -1,9 +1,16 @@
-#!/usr/bin/env python3
-
+#!/usr/bin/python3
+"""Module that lists all states from the hbtn_0e_0_usa database."""
 import sys
 import MySQLdb
 
 def list_states(username, password, database):
+    """Lists all states from the database hbtn_0e_0_usa.
+
+    Args:
+        username: The username
+        password: The password
+        database: The database
+    """
     # Connect to MySQL server
     db = MySQLdb.connect(host='localhost', port=3306, user=username, passwd=password, db=database)
     
