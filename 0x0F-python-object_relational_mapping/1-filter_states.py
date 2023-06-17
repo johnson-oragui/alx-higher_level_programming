@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Module that lists all states from the hbtn_0e_0_usa database."""
 import MySQLdb
 import sys
 
