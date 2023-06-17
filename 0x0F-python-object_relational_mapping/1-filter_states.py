@@ -1,40 +1,29 @@
 #!/usr/bin/python3
-"""
-Module that lists all states starting with N from the hbtn_0e_0_usa database.
-"""
 
-import MySQLdb
 import sys
-
+import MySQLdb
 
 def list_states_with_N(username, password, database):
-    """Lists all states starting with N from the hbtn_0e_0_usa database.
-    
+    """
+    Lists all states with a name starting with N from the specified database.
+
     Args:
-        username: The username
-        password: The password
-        database: The database
+        username (str): MySQL username.
+        password (str): MySQL password.
+        database (str): Name of the database.
     """
     # Connect to MySQL server
-    db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=username,
-        passwd=password,
-        db=database
-    )
-
-    # Create a cursor object to interact with the database
+    db = MySQLdb.connect(user=username, passwd=password, db=database)
     cursor = db.cursor()
 
-    # Execute the SQL query to retrieve states starting with N
-    query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
-    cursor.execute(query)
+    # Execute the SQL query to retrieve all states sorted by id
+    cursor.execute("SELECT * FROM `states` ORDER BY `id`")
 
-    # Fetch all the rows and print the state names
+    # Fetch all rows and print states with names starting with N
     states = cursor.fetchall()
     for state in states:
-        print(state[1])
+        if state[1][0] == "N":
+            print(state)
 
     # Close the cursor and database connection
     cursor.close()
@@ -47,6 +36,6 @@ if __name__ == "__main__":
     password = sys.argv[2]
     database = sys.argv[3]
 
-    # List all states starting with N
+    # List all states with names starting with N
     list_states_with_N(username, password, database)
 
