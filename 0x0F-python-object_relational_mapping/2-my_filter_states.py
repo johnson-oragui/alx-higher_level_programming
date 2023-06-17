@@ -1,47 +1,21 @@
 #!/usr/bin/python3
-# Displays all values in the states table of the database hbtn_0e_0_usa
-# whose name matches that supplied as argument.
-# Usage: ./2-my_filter_states.py <mysql username> \
-#                                <mysql password> \
-#                                <database name> \
-#                                <state name searched>
+
+"""Module that lists all states from the hbtn_0e_0_usa database."""
+
 import sys
 import MySQLdb
 
 if __name__ == "__main__":
 
-    # Get the command-line arguments
-    mysql_username = sys.argv[1]
-    mysql_password = sys.argv[2]
-    database_name = sys.argv[3]
-    state_name = sys.argv[4]
+    # Get MySQL credentials and search name from command-line arguments
+    # and # Connect to MySQL server
+    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
+    c = db.cursor()
 
-    # Connect to the MySQL server
-    db = MySQLdb.connect(
-        host='localhost',
-        port=3306,
-        user=mysql_username,
-        passwd=mysql_password,
-        db=database_name
-    )
+    # Execute the SQL query to retrieve states with the specified name
+    c.execute("SELECT * \
+                 FROM `states` \
+                WHERE BINARY `name` = '{}'".format(sys.argv[4]))
 
-    # Create a cursor object to execute queries
-    cursor = db.cursor()
-
-    # Prepare the SQL query using format to insert the user input
-    sql_query = "SELECT * FROM states WHERE name LIKE '{}' ORDER BY id ASC".format(state_name)
-
-    # Execute the query
-    cursor.execute(sql_query)
-
-    # Fetch all the rows returned by the query
-    rows = cursor.fetchall()
-
-    # Display the results
-    for row in rows:
-        print(row)
-
-    # Close the cursor and database connection
-    cursor.close()
-    db.close()
-
+    # Fetch all rows and print the states
+    [print(state) for state in c.fetchall()]
