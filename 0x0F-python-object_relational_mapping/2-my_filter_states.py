@@ -9,9 +9,39 @@ import sys
 import MySQLdb
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
-    c = db.cursor()
-    c.execute("SELECT * \
-                 FROM `states` \
-                WHERE BINARY `name` = '{}'".format(sys.argv[4]))
-    [print(state) for state in c.fetchall()]
+
+    # Get the command-line arguments
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    database_name = sys.argv[3]
+    state_name = sys.argv[4]
+
+    # Connect to the MySQL server
+    db = MySQLdb.connect(
+        host='localhost',
+        port=3306,
+        user=mysql_username,
+        passwd=mysql_password,
+        db=database_name
+    )
+
+    # Create a cursor object to execute queries
+    cursor = db.cursor()
+
+    # Prepare the SQL query using format to insert the user input
+    sql_query = "SELECT * FROM states WHERE name LIKE '{}' ORDER BY id ASC".format(state_name)
+
+    # Execute the query
+    cursor.execute(sql_query)
+
+    # Fetch all the rows returned by the query
+    rows = cursor.fetchall()
+
+    # Display the results
+    for row in rows:
+        print(row)
+
+    # Close the cursor and database connection
+    cursor.close()
+    db.close()
+
