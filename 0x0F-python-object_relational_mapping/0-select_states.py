@@ -1,43 +1,26 @@
 #!/usr/bin/python3
-"""Module that lists all states from the hbtn_0e_0_usa database."""
+"""Module that lists all states from a MySQL database."""
 import sys
 import MySQLdb
 
-def list_states(username, password, database):
-    """Lists all states from the database hbtn_0e_0_usa.
+if __name__ == "__main__":
+    # Get the command-line arguments
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    database_name = sys.argv[3]
 
-    Args:
-        username: The username
-        password: The password
-        database: The database
-    """
-    # Connect to MySQL server
-    db = MySQLdb.connect(host='localhost', port=3306, user=username, passwd=password, db=database)
-    
+    # Connect to the MySQL server
+    db = MySQLdb.connect(user=mysql_username, passwd=mysql_password, db=database_name)
+
     # Create a cursor object to execute SQL queries
     cursor = db.cursor()
-    
-    # Execute the SQL query to retrieve states
-    cursor.execute('SELECT * FROM states ORDER BY id ASC')
-    
-    # Fetch all the rows from the result set
-    rows = cursor.fetchall()
-    
-    # Display the results
-    for row in rows:
-        print(row)
-    
-    # Close the cursor and database connection
-    cursor.close()
-    db.close()
 
-# Check if the script is being run directly
-if __name__ == '__main__':
-    # Get command line arguments
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    
-    # Call the function to list states
-    list_states(username, password, database)
+    # Execute the SQL query to select all rows from the 'states' table
+    cursor.execute("SELECT * FROM `states`")
+
+    # Fetch all rows from the result set and print them
+    [print(state) for state in cursor.fetchall()]
+
+    # Close the database connection
+    db.close()
 
