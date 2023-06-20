@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Module that adds a city and its associated state to a MySQL database using SQLAlchemy."""
+"""Module that adds a city and its associated state\
+        to a MySQL database using SQLAlchemy."""
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker

@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Module that defines the City model representing a city for a MySQL database using SQLAlchemy."""
+"""Module that defines the City model representing\
+        a city for a MySQL database using SQLAlchemy."""
 
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
