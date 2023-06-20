@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Module that retrieves and prints the first state from a MySQL database using SQLAlchemy."""
+"""Module that retrieves and prints the first state\
+        from a MySQL database using SQLAlchemy."""
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -11,7 +12,7 @@ if __name__ == "__main__":
                            .format(sys.argv[1], sys.argv[2], sys.argv[3]),
                            pool_pre_ping=True)
 
-     # Create a session factory
+    # Create a session factory
     Session = sessionmaker(bind=engine)
 
     # Create a session object

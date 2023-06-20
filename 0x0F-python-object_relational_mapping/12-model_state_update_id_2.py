@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Module that updates the name of a state in a MySQL database using SQLAlchemy."""
+"""Module that updates the name of a state in a\
+        MySQL database using SQLAlchemy."""
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker

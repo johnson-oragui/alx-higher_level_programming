@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Module that deletes states containing the letter "a" from a MySQL database using SQLAlchemy."""
+"""Module that deletes states containing the letter\
+        "a" from a MySQL database using SQLAlchemy."""
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
