@@ -1,4 +1,4 @@
-#!@/usr/bin/python3
+#!/usr/bin/python3
 """Module that lists all State objects, and corresponding City objects,\
         contained in the mySQL database"""
 import sys
@@ -28,4 +28,3 @@ if __name__ == "__main__":
         for city in state.cities:
             # Print city ID and name
             print("    {}: {}".format(city.id, city.name))
-
