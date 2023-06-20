@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Module that interacts with a MySQL database using SQLAlchemy to print states and their cities.
+Module that interacts with a MySQL database using\
+        SQLAlchemy to print states and their cities.
 """
 
 import sys
@@ -24,4 +25,3 @@ if __name__ == "__main__":
         print("{}: {}".format(state.id, state.name))
         for city in state.cities:
             print("    {}: {}".format(city.id, city.name))
-
