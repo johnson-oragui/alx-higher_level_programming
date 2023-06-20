@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Module that defines the State class representing a state in a MySQL database."""
+"""Module that defines the State class\
+        representing a state in a MySQL database."""
 
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
