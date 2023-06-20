@@ -11,7 +11,7 @@ if __name__ == "__main__":
     # Connect to MySQL server
     c = db.cursor()
 
-     # Execute the SQL query to retrieve all states
+    # Execute the SQL query to retrieve all states
     c.execute("SELECT `c`.`id`, `c`.`name`, `s`.`name` \
                  FROM `cities` as `c` \
                 INNER JOIN `states` as `s` \
