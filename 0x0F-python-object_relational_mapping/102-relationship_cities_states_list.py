@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Module that retrieves and prints all cities along with their associated states from a MySQL database."""
+"""Module that retrieves and prints all cities along with\
+        their associated states from a MySQL database."""
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -15,7 +16,9 @@ if __name__ == "__main__":
 
     # Create the engine to connect to the MySQL server
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
-                       .format(mysql_username, mysql_password, database_name))
+                       .format(mysql_username,\
+                               mysql_password,\
+                               database_name))
 
     # Create a configured Session class
     Session = sessionmaker(bind=engine)
@@ -32,4 +35,3 @@ if __name__ == "__main__":
 
     # Close the session
     session.close()
-
