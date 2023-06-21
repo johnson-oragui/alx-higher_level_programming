@@ -13,4 +13,3 @@ def print_matrix_integer(matrix=[[]]):
                 print("{:d} ".format(num), end="")
         # Move to the next line after printing all elements of a row
         print()
-
