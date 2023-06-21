@@ -4,7 +4,8 @@ def magic_calculation(a, b):
     Perform a magic calculation based on the given values
     """
 
-    # Import the 'add' and 'sub' functions from the 'magic_calculation_102' module
+    # Import the 'add' and 'sub' functions 
+    # from the 'magic_calculation_102' module
     add = __import__('magic_calculation_102').add
     sub = __import__('magic_calculation_102').sub
 
