@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 """
-Script that retrieves 10 most recent commits from a repository using the GitHub API.
+Script that retrieves 10 most recent \
+        commits from a repository using the GitHub API.
 """
 
 import requests
@@ -29,4 +30,5 @@ if __name__ == "__main__":
             author_name = commit['commit']['author']['name']
             print(f"{sha}: {author_name}")
     else:
-        print(f"Error: Failed to retrieve commits. Status code: {response.status_code}")
+        print(f"Error: Failed to retrieve commits. \
+                Status code: {response.status_code}")
