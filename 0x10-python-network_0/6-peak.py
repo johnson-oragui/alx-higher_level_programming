@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Finds a peak in a list of unsorted integers"""
 
+
 def find_peak(list_of_integers):
     """
     Finds a peak in a list of unsorted integers.
@@ -9,7 +10,8 @@ def find_peak(list_of_integers):
         list_of_integers (list): List of unsorted integers.
 
     Returns:
-        int or None: The peak element in the list, or None if the list is empty.
+        int or None: The peak element in the list, \
+                or None if the list is empty.
     """
     if not list_of_integers:
         return None
