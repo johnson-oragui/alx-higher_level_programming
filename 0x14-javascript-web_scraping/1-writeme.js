@@ -10,12 +10,8 @@ fs.writeFile(process.argv[2], process.argv[3], error => {
 
   if (error) {
     // If an error occurs during the write operation, the 'error' parameter will contain an error object.
-    console.error('Error writing to the file:', error);
+    console.error(error);
     // Print the error message to the console using console.error().
-  } else {
-    // If the write operation is successful, no error will be present in the 'error' parameter.
-
-    // The data has been successfully written to the file specified in process.argv[2].
-    console.log('Data has been written to the file successfully.');
+  }
   }
 });
