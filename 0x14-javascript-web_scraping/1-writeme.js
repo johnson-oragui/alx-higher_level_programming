@@ -13,5 +13,4 @@ fs.writeFile(process.argv[2], process.argv[3], 'utf8', error => {
     console.error(error);
     // Print the error message to the console using console.error().
   }
-  }
 });
