@@ -4,7 +4,7 @@
 const fs = require('fs');
 // Import the built-in Node.js 'fs' module, which provides functions for working with the file system, including reading and writing files.
 
-fs.writeFile(process.argv[2], process.argv[3], error => {
+fs.writeFile(process.argv[2], process.argv[3], 'utf8', error => {
   // Use fs.writeFile() to write data to a file specified as the third command-line argument (process.argv[2]).
   // The data to be written is taken from the fourth command-line argument (process.argv[3]).
 
