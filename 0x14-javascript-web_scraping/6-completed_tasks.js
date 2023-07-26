@@ -3,7 +3,7 @@
 const request = require('request');
 
 // Function to compute the number of completed tasks by user ID
-function countCompletedTasks(todos) {
+function countCompletedTasks (todos) {
   const completedTasksByUser = {};
 
   todos.forEach((todo) => {
@@ -17,7 +17,7 @@ function countCompletedTasks(todos) {
 }
 
 // Main function to fetch data and compute the completed tasks
-function fetchAndComputeCompletedTasks(apiUrl) {
+function fetchAndComputeCompletedTasks (apiUrl) {
   request(apiUrl, (error, response, body) => {
     if (!error && response.statusCode === 200) {
       const todos = JSON.parse(body);
