@@ -21,7 +21,7 @@ request(apiUrl, function (error, response, body) {
         }
       });
 
-      console.log(`{${Object.entries(completed).map(([key, value]) => `'${key}':${value}`).join(",\n ")}}`);
+      console.log(`{${Object.entries(completed).map(([key, value]) => ` '${key}':${value}`).join(",\n ")}}`);
     } catch (parseError) {
       console.error('Error parsing JSON:', parseError);
     }
