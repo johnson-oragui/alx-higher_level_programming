@@ -4,28 +4,27 @@ const request = require('request');
 
 const apiUrl = process.argv[2];
 
+// Fetch todo tasks data
 request(apiUrl, function (error, response, body) {
   if (!error && response.statusCode === 200) {
-    try {
-      const todos = JSON.parse(body);
+    const todoData = JSON.parse(body);
 
-      const completed = {};
+    const completedTasks = {}; // Object to store the count of completed tasks for each user
 
-      todos.forEach((todo) => {
-        if (todo.completed) {
-          if (completed[todo.userId] === undefined) {
-            completed[todo.userId] = 1;
-          } else {
-            completed[todo.userId]++;
-          }
+    // Loop through the tasks and count completed tasks for each user
+    todoData.forEach((task) => {
+      if (task.completed) {
+        if (!completedTasks[task.userId]) {
+          completedTasks[task.userId] = 1;
+        } else {
+          completedTasks[task.userId]++;
         }
-      });
+      }
+    });
 
-      console.log(`{${Object.entries(completed).map(([key, value]) => ` '${key}': ${value}`).join(",\n ")} }`);
-    } catch (parseError) {
-      console.error('Error parsing JSON:', parseError);
-    }
+    console.log(`{${Object.entries(completedTasks).map(([key, value]) => ` '${key}': ${value}`).join(",\n ")} }`);
   } else {
-    console.error('Error:', error);
+    console.error('Error fetching todo data:', error);
   }
 });
+
