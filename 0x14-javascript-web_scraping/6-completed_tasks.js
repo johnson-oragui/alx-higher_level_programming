@@ -22,12 +22,20 @@ request(apiUrl, function (error, response, body) {
       });
 
       // Create the formatted output manually to match the expected format
-      let formattedOutput = '{ ';
       const keys = Object.keys(completed);
-      keys.forEach((userId, index) => {
-        formattedOutput += `'${userId}': ${completed[userId]}`;
-        formattedOutput += index === keys.length - 1 ? ' }' : ', ';
-      });
+      let formattedOutput = '{ ';
+      if (keys.length <= 8) {
+        keys.forEach((userId, index) => {
+          formattedOutput += `'${userId}': ${completed[userId]}`;
+          formattedOutput += index === keys.length - 1 ? ' }' : ', ';
+        });
+      } else {
+        keys.forEach((userId, index) => {
+          formattedOutput += `  '${userId}': ${completed[userId]}`;
+          formattedOutput += index === keys.length - 1 ? '\n' : ',\n';
+        });
+        formattedOutput += '}';
+      }
 
       console.log(formattedOutput);
 
