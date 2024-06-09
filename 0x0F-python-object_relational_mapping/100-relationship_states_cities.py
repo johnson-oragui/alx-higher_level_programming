@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
     # Create a new city and its associated state
     state = State(name="California")
-    city = City(name="San Francisco", state=state)
+    city = City(name="San Francisco", state_id=state.id)
 
     # Add the new city and associated state to the session
     session.add(state)
