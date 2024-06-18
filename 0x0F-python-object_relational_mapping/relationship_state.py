@@ -1,13 +1,10 @@
 #!/usr/bin/python3
-"""Module that defines the State model representing\
-        a state for a MySQL database using SQLAlchemy."""
+"""Module that defines the State model representing
+a state for a MySQL database using SQLAlchemy.
+"""
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
-from relationship_city import Base, City
-
-# Create the base class for the declarative models
-Base = declarative_base()
+from relationship_city import Base
 
 
 class State(Base):
@@ -20,8 +17,9 @@ class State(Base):
         cities (sqlalchemy.orm.relationship): The State-City relationship.
     """
     __tablename__ = "states"
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(128), nullable=False)
 
     # Define the relationship between State and City models
-    cities = relationship("City", backref="state", cascade="all, delete")
+    cities = relationship("City", backref="state",
+                          cascade="all, delete-orphan")

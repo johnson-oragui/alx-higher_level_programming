@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""Module that defines the City model representing\
-        a city for a MySQL database using SQLAlchemy."""
-
+"""Module that defines the City model representing
+a city for a MySQL database using SQLAlchemy.
+"""
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -20,4 +20,5 @@ class City(Base):
     __tablename__ = "cities"
     id = Column(Integer, primary_key=True)
     name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey("states.id"), nullable=False)
+    state_id = Column(Integer, ForeignKey("states.id", ondelete='CASCADE'),
+                      nullable=False)
