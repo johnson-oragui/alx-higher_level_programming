@@ -4,20 +4,20 @@
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from relationship_state import State
-from relationship_city import City
 from relationship_state import Base, State
+from relationship_city import City
+
 
 if __name__ == "__main__":
 
     # Get the command-line arguments
-    mysql_username = sys.argv[1]
-    mysql_password = sys.argv[2]
-    database_name = sys.argv[3]
+    db_username = sys.argv[1]
+    db_pass = sys.argv[2]
+    db_name = sys.argv[3]
 
+    con = f'mysql+mysqldb://{db_username}:{db_pass}@localhost:3306/{db_name}'
     # Create the engine to connect to the MySQL server
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
-        mysql_username, mysql_password, database_name), pool_pre_ping=True)
+    engine = create_engine(con)
 
     # Create all tables if they don't exist
     Base.metadata.create_all(engine)
